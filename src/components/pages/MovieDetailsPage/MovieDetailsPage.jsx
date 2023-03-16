@@ -1,4 +1,5 @@
-import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
+// import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/shared/api/api-movie';
 
