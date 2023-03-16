@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+/* @import-normalize; bring in normalize.css styles */
 
 body {
   margin: 0;
@@ -7,6 +7,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* background-image: url('https://static.vecteezy.com/system/resources/previews/018/888/377/original/cartoon-popcorn-icon-png.png'); */
+
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyzAbJAnW-gGABfueyzFXgsibzF8BhGhnIIA&usqp=CAU'); */
+
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScUjAE2RSE0UumzcLm9ZTV1A_r7_TqTgUEcg&usqp=CAU'); */
+
+  /* background-image: url('https://www.creativefabrica.com/wp-content/uploads/2020/02/13/Celebration-Day-Logo-Graphics-1-102-580x386.jpg'); */
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-z5ZkaM98o9hEinDzH_6yDo9wTr8vMfqeag&usqp=CAU'); */
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokUs8jbaDVXjXfB-tYYPhL9RONzImUEmv8Q&usqp=CAU'); */
+  /* background-image: url('https://media.istockphoto.com/id/1285951894/vector/black-cat-popcorn-box-cute-cartoon-funny-character-cinema-theater-film-show-kitten-watching.jpg?b=1&s=612x612&w=0&k=20&c=PHQRHwVRFDgsfZdmjd9Wj5e6qbKjOh4ATCKE343dmI8='); */
+  /* background-image: url('https://media.istockphoto.com/id/1332146684/vector/cat-set-popcorn-french-fries-cute-cartoon-funny-character-black-white-kitty-cinema-theater.jpg?s=612x612&w=0&k=20&c=xAkE9wJuqlhRoE6iA5CFQa9lXTkQkXUfxurovgUExkY='); */
+  /* background-image: url('https://media.istockphoto.com/id/1264298621/vector/cat-set-popcorn-soda-french-fries-cinema-theater-cute-cartoon-funny-character-film-show.jpg?b=1&s=612x612&w=0&k=20&c=xMqhrhDY6ERvltjqfRi5ypik27Upshg_Z1m9DCzCNz4='); */
+  /* background-image: url('https://media.istockphoto.com/id/1319788168/vector/cat-set-popcorn-fsoda-glass-cute-cartoon-funny-character-kittens-watching-movie-black-white.jpg?b=1&s=612x612&w=0&k=20&c=b3nRJomsauTuHswBila8vJpZJyug99JStAZ8M8HOnnQ='); */
+  /* background-image: url('https://static.vecteezy.com/system/resources/thumbnails/008/208/368/small_2x/pop-corn-logo-icon-explode-cinema-snacks-concept-illustration-free-vector.jpg'); */
+  background-image: url('https://media.istockphoto.com/id/1340779011/vector/popcorn-soda-and-3d-glasses-in-pop-art-style.jpg?s=612x612&w=0&k=20&c=QITLrMWbLTZmjsIpsVYCLOCU59LFZ00C4foxlszk1ig=');
 }
 
 code {
