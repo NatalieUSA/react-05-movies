@@ -1,10 +1,9 @@
-// import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
 import {
   useParams,
   useNavigate,
   Link,
   Outlet,
-  // useLocation,
+  useLocation,
 } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/shared/api/api-movie';
@@ -41,16 +40,13 @@ const MovieDetailsPage = () => {
     fetchMovie();
   }, [setState, movieId]);
 
-  const navigate = useNavigate();
-  // console.log(navigate);
-  const goBack = () => navigate(-1);
-
-  // const location = useLocation();
-
+  const location = useLocation();
+  const from = location.state?.from || '/';
   const { item } = state;
-  // // const { title, overview, poster_path } = state;
-  // console.log(item);
-  // console.log(item);
+
+  const navigate = useNavigate();
+  const goBack = () => navigate(from);
+
   return (
     <div className={styles.wraper}>
       <div className={styles.wrap}>
@@ -107,63 +103,3 @@ const MovieDetailsPage = () => {
   );
 };
 export default MovieDetailsPage;
-
-//
-//
-// import { getSinglePost } from '../../shared/api/api-posts';
-
-// import { Link } from 'react-router-dom';
-
-// const SinglePostPageOld = () => {
-//   const [state, setState] = useState({
-//     item: {},
-//     loading: false,
-//     error: null,
-//   });
-
-//   const { id } = useParams();
-//   //   console.log(id);
-
-//   useEffect(() => {
-//     const fetchPosts = async () => {
-//       setState(prevState => ({ ...prevState, loading: true, error: null }));
-//       try {
-//         const result = await getSinglePost(id);
-//         setState(prevState => {
-//           return { ...prevState, item: result };
-//         });
-//       } catch (error) {
-//         setState(prevState => ({ ...prevState, error }));
-//       } finally {
-//         setState(prevState => {
-//           return { ...prevState, loading: false };
-//         });
-//       }
-//     };
-//     fetchPosts();
-//   }, [setState, id]);
-
-//   const location = useLocation();
-//   const from = location.state?.from || './posts';
-//   console.log('SinglePostPageOld', location);
-
-//   const navigate = useNavigate();
-//   // console.log(navigate);
-//   const goBack = () => navigate(from);
-
-//   const { title, body } = state.item;
-
-//   return (
-//     <div>
-//       <button onClick={goBack}>GO BACK</button>
-//       <h3>{title}</h3>
-//       <p>{body}</p>
-//       <Link state={{ from }} to={`/posts/${id}/comments`}>
-//         show comments
-//       </Link>
-
-//       <Outlet />
-//     </div>
-//   );
-// };
-// export default SinglePostPageOld;

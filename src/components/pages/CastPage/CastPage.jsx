@@ -32,7 +32,7 @@ const CastPage = () => {
     fetchCast();
   }, [setState, movieId]);
 
-  const { items } = state;
+  const { items, loading } = state;
   console.log(items);
   // console.log(items.cast);
 
@@ -51,6 +51,10 @@ const CastPage = () => {
             alt={`actor ${item.name}`}
           />
         ))}
+      {loading && <p>...load actors</p>}
+      {items.length === 0 && (
+        <p className={styles.info}>We have no info about actors</p>
+      )}
     </div>
 
     // <div>

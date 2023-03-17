@@ -31,3 +31,10 @@ export const getReview = async movieId => {
   );
   return data.results;
 };
+
+export const getSearchMovie = async query => {
+  const { data } = await instance.get(
+    `/search/movie?query=${query}&api_key=f7a41df070de2591b426f4643d7fd0fb&language=en-US&page=1`
+  );
+  return data;
+};

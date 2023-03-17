@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import MovieList from '../MovieList/MovieList';
 import { getTrendingMovie } from './../../shared/api/api-movie';
-import styles from './trend-movies.module.css';
+// import styles from './trend-movies.module.css';
 
 const TrendMovies = () => {
   const [state, setState] = useState({
@@ -15,7 +15,6 @@ const TrendMovies = () => {
       setState(prevState => ({ ...prevState, loading: true, error: null }));
       try {
         const result = await getTrendingMovie();
-        // console.log(result.id);
         setState(prevState => {
           return { ...prevState, items: [...prevState.items, ...result] };
         });
@@ -31,19 +30,10 @@ const TrendMovies = () => {
   }, [setState]);
 
   const { items, loading, error } = state;
-  //   console.log(items);
 
-  const elements = items.map(({ id, title }) => (
-    <li key={id}>
-      <Link to={`/movies/${id}`} className={styles.link}>
-        {title}
-      </Link>
-    </li>
-  ));
   return (
     <div>
-      <ol className={styles.list}>{elements}</ol>
-
+      {items.length && <MovieList items={items} />}
       {loading && <p>...load posts</p>}
       {error && <p>...error load posts...posts load failed</p>}
     </div>
