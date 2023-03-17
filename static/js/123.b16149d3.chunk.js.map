@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/123.b16149d3.chunk.js","mappings":"0JAOA,UAPiB,WACf,OACE,0BACE,sCAGL,C","sources":["components/pages/CastPage/CastPage.jsx"],"sourcesContent":["const CastPage = () => {\n  return (\n    <div>\n      <h4>CastPage</h4>\n    </div>\n  );\n};\nexport default CastPage;\n"],"names":[],"sourceRoot":""}
