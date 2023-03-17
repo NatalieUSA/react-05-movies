@@ -11,15 +11,23 @@ export const getTrendingMovie = async (page = 1) => {
   return data.results;
 };
 
-// export const getMovieDetails = async movieId => {
-//   const response = await instance.get(
-//     '/movie/`${movieId}`?api_key=f7a41df070de2591b426f4643d7fd0fb&language=en-US'
-//   );
-//   return response.data;
-// };
-export const getMovieDetails = async id => {
+export const getMovieDetails = async movieId => {
   const response = await instance.get(
-    `/movie/${id}?api_key=f7a41df070de2591b426f4643d7fd0fb&language=en-US`
+    `/movie/${movieId}?api_key=f7a41df070de2591b426f4643d7fd0fb&language=en-US`
   );
   return response.data;
+};
+
+export const getCast = async movieId => {
+  const { data } = await instance.get(
+    `/movie/${movieId}}/credits?api_key=f7a41df070de2591b426f4643d7fd0fb&language=en-US`
+  );
+  return data.cast;
+};
+
+export const getReview = async movieId => {
+  const { data } = await instance.get(
+    `/movie/${movieId}/reviews?api_key=f7a41df070de2591b426f4643d7fd0fb&language=en-US`
+  );
+  return data.results;
 };

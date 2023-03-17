@@ -2,31 +2,34 @@
   list-style: none;
   display: flex;
   justify-content: center;
-  background-color: rgb(240, 238, 238);
+  background-color: rgb(211, 4, 4);
   padding: 15px;
+  /* opacity: 80%; */
 }
 
 .link {
   text-decoration: none;
-  color: grey;
+  color: white;
   display: inline-block;
   text-align: center;
   padding: 10px 15px;
-  width: 80px;
+  width: 180px;
   font-size: large;
-  border: 1px solid grey;
-  border-radius: 17px;
+  border: 1px solid rgb(255, 166, 0);
+  /* border-radius: 17px; */
   margin-right: 8px;
-  padding: 5px 30px;
+  padding: 10px 30px;
   transition-duration: 0.4s;
   transition-timing-function: ease;
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 2px;
   font-family: 'futura-demic-reg', Arial, sans-serif;
 }
 
 .link:global(.active) {
   text-transform: uppercase;
-  color: deeppink;
-  border: 1px solid deeppink;
+  font-weight: 700;
+  color: rgb(211, 4, 4);
+  /* border: 1px solid rgb(211, 4, 4); */
+  background-color: rgb(255, 166, 0);
 }

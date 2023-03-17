@@ -1,7 +1,15 @@
 // import { useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import {
+  useParams,
+  useNavigate,
+  Link,
+  Outlet,
+  // useLocation,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getMovieDetails } from 'components/shared/api/api-movie';
+
+import styles from './movie-details-page.module.css';
 
 const MovieDetailsPage = () => {
   const [state, setState] = useState({
@@ -9,14 +17,14 @@ const MovieDetailsPage = () => {
     loading: false,
     error: null,
   });
-  const { id } = useParams();
-  console.log(id);
+  const { movieId } = useParams();
+  // console.log(id);
 
   useEffect(() => {
     const fetchMovie = async () => {
       setState(prevState => ({ ...prevState, loading: true, error: null }));
       try {
-        const result = await getMovieDetails(id);
+        const result = await getMovieDetails(movieId);
         console.log(result);
 
         setState(prevState => {
@@ -31,20 +39,70 @@ const MovieDetailsPage = () => {
       }
     };
     fetchMovie();
-  }, [setState, id]);
+  }, [setState, movieId]);
+
+  const navigate = useNavigate();
+  // console.log(navigate);
+  const goBack = () => navigate(-1);
+
+  // const location = useLocation();
+
   const { item } = state;
   // // const { title, overview, poster_path } = state;
   // console.log(item);
   // console.log(item);
   return (
-    <div>
-      <h4>MovieDetailsPage</h4>
-      <h2>
-        {item.original_title} {item.release_date}
-      </h2>
-      {/* <h3>{title}</h3>
-      <h5>{overview}</h5>
-      <img src="{poster_path }" alt="{title}" /> */}
+    <div className={styles.wraper}>
+      <div className={styles.wrap}>
+        <button className={styles} onClick={goBack}>
+          <span>GO BACK</span>
+        </button>
+        <div>
+          <img
+            className={styles.poster}
+            src={
+              item?.poster_path &&
+              `https://image.tmdb.org/t/p/w500${item.poster_path}`
+            }
+            alt=""
+            // alt={item.title}
+          />
+        </div>
+
+        <div className={styles.text}>
+          <div>
+            <h4>MovieDetailsPage</h4>
+            <h2>
+              Title:
+              {item.title}
+            </h2>
+            <p> {item.release_date}</p>
+
+            <p>
+              Vote <span>{Math.ceil(item.vote_average * 100) / 10}%</span>
+            </p>
+            <p className={styles.genres}>
+              Genres:
+              {item.genres &&
+                item.genres.map(genre => (
+                  <span key={genre.id}>{genre.name}</span>
+                ))}
+            </p>
+          </div>
+        </div>
+        <div className={styles.overview}>
+          <h5>Overview: {item.overview}</h5>
+        </div>
+      </div>
+      <ul className={styles.page}>
+        <Link to={`/movies/${movieId}/cast`} className={styles.link}>
+          Actors
+        </Link>
+        <Link to={`/movies/${movieId}/reviews`} className={styles.link}>
+          Reviews
+        </Link>
+      </ul>
+      <Outlet />
     </div>
   );
 };

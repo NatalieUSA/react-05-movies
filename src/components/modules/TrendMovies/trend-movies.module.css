@@ -7,16 +7,16 @@
 
   margin: 0 auto;
   padding: 40px;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   /* box-shadow: inset 6px 6px 6px 0px rgb(255, 0, 64),
     inset -6px -10px 10px 0px rgb(255, 0, 64); */
   list-style: none;
   width: 55%;
   height: 100%;
-  background-color: white;
-  color: rgb(255, 0, 43);
+  background-color: rgb(211, 4, 4);
+  color: rgb(211, 4, 4);
   margin-bottom: 30px;
-
+  border: 1px dashed rgb(255, 166, 0);
   @media screen and (max-width: 419px) {
     width: 95%;
   }
@@ -36,17 +36,19 @@
 }
 
 .link {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   padding-left: 10%;
   padding-right: 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  color: grey;
-  font-weight: bold;
+  color: white;
+
+  font-size: larger;
+  /* font-weight: bold; */
 }
 
 .link:hover {
-  color: red;
+  color: rgb(255, 166, 0);
 }
