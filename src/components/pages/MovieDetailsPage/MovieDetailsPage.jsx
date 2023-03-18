@@ -1,14 +1,9 @@
-import {
-  useParams,
-  useNavigate,
-  Link,
-  Outlet,
-  useLocation,
-} from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import { getMovieDetails } from 'components/shared/api/api-movie';
 
 import styles from './movie-details-page.module.css';
+import defaultimage from '../CastPage/dfi.jpg';
 
 const MovieDetailsPage = () => {
   const [state, setState] = useState({
@@ -41,27 +36,32 @@ const MovieDetailsPage = () => {
   }, [setState, movieId]);
 
   const location = useLocation();
-  const from = location.state?.from || '/';
+  // console.log(location);
+  // const from = location.state?.from || '/';
+  const backLinkLocation = useRef(location.state?.from ?? '/movies');
+  // console.log(backLinkLocation);
+
   const { item } = state;
 
-  const navigate = useNavigate();
-  const goBack = () => navigate(from);
+  // const navigate = useNavigate();
+  // const goBack = () => navigate(from);
 
   return (
     <div className={styles.wraper}>
       <div className={styles.wrap}>
-        <button className={styles} onClick={goBack}>
+        <Link to={backLinkLocation.current} className={styles.back}>
           <span>GO BACK</span>
-        </button>
+        </Link>
+
         <div>
           <img
             className={styles.poster}
             src={
-              item?.poster_path &&
-              `https://image.tmdb.org/t/p/w500${item.poster_path}`
+              item?.poster_path
+                ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
+                : defaultimage
             }
-            alt=""
-            // alt={item.title}
+            alt={item.title}
           />
         </div>
 
@@ -91,7 +91,11 @@ const MovieDetailsPage = () => {
         </div>
       </div>
       <ul className={styles.page}>
-        <Link to={`/movies/${movieId}/cast`} className={styles.link}>
+        <Link
+          // to={backLinkLocation.current}
+          to={`/movies/${movieId}/cast`}
+          className={styles.link}
+        >
           Actors
         </Link>
         <Link to={`/movies/${movieId}/reviews`} className={styles.link}>

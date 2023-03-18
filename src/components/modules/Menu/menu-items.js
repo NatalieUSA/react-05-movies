@@ -11,11 +11,11 @@ const menuItems = [
     to: '/movies',
     text: 'Movies',
   },
-  {
-    id: nanoid(),
-    to: '/feedback',
-    text: 'Feedback',
-  },
+  // {
+  //   id: nanoid(),
+  //   to: '/feedback',
+  //   text: 'Feedback',
+  // },
 ];
 
 export default menuItems;

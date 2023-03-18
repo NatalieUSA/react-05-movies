@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReview } from 'components/shared/api/api-movie';
+import PropTypes from 'prop-types';
 import styles from './reviews-page.module.css';
 
 const ReviewsPage = () => {
@@ -46,3 +47,7 @@ const ReviewsPage = () => {
   );
 };
 export default ReviewsPage;
+
+ReviewsPage.propTypes = {
+  movieId: PropTypes.string,
+};

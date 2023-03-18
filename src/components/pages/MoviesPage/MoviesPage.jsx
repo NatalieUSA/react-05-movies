@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import SearchMovieForm from 'components/modules/SearchMovieForm/SearchMovieForm';
 import { getSearchMovie } from 'components/shared/api/api-movie';
 import MovieList from 'components/modules/MovieList/MovieList';
+import { Loader } from 'components/shared/Loader/Loader';
 
 const MoviesPage = () => {
   const [state, setState] = useState({
@@ -14,8 +15,6 @@ const MoviesPage = () => {
   });
 
   const [searchParams, setSearchParams] = useSearchParams();
-  // console.log(searchParams);
-
   const search = searchParams.get('search');
   console.log(search);
 
@@ -65,8 +64,8 @@ const MoviesPage = () => {
     <div>
       <SearchMovieForm onSubmit={changeSearch} />
       {items.length > 0 && <MovieList items={items} />}
-      {items.length === 0 && <p>empty results</p>}
-      {loading && <p>...load posts</p>}
+
+      {loading && <Loader />}
     </div>
   );
 };

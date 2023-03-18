@@ -2,8 +2,9 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getCast } from 'components/shared/api/api-movie';
 import defaultimage from './dfi.jpg';
-
+import PropTypes from 'prop-types';
 import styles from './cast-page.module.css';
+import { Loader } from 'components/shared/Loader/Loader';
 
 const CastPage = () => {
   const [state, setState] = useState({
@@ -38,6 +39,7 @@ const CastPage = () => {
 
   return (
     <div className={styles.imgwrap}>
+      <h2 className={styles.total}>Total actors: {items.length} </h2>
       {items.length > 0 &&
         items.map(item => (
           <img
@@ -51,17 +53,13 @@ const CastPage = () => {
             alt={`actor ${item.name}`}
           />
         ))}
-      {loading && <p>...load actors</p>}
-      {items.length === 0 && (
-        <p className={styles.info}>We have no info about actors</p>
-      )}
+      {loading && <Loader />}
+   
     </div>
-
-    // <div>
-    //   <button>Go back</button>
-    //   <h1>CastPage</h1>
-
-    // </div>
   );
 };
 export default CastPage;
+
+CastPage.propTypes = {
+  movieId: PropTypes.string,
+};

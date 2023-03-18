@@ -6,7 +6,7 @@ const HomePage = () => {
     <div className={styles.wrap}>
       <div>
         <h3>Trending movies of the last week</h3>
-        {/* {items.length && <TrendMovies items={items} />} */}
+
         <TrendMovies />
       </div>
     </div>

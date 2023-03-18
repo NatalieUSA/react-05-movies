@@ -41,6 +41,3 @@ const TrendMovies = () => {
 };
 
 export default TrendMovies;
-// {
-//   /* <Link to={`/movies/${id}`}>{title}</Link> */
-// }

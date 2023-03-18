@@ -6,12 +6,11 @@ const SearchMovie = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
   });
-  console.log(state);
 
   const [searchParams, setSearchParams] = useSearchParams();
   // console.log(searchParams);
-  // const query = searchParams.get('query');
-  // console.log(query);
+  const query = searchParams.get('query') || '';
+  console.log(query);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -19,8 +18,6 @@ const SearchMovie = ({ onSubmit }) => {
     console.log(name);
     setState({ [name]: value });
 
-    // const nextParams = value !== '' ? { value } : {};
-    // setSearchParams(nextParams);
     if (value === '') {
       return setSearchParams({});
     }
@@ -29,7 +26,6 @@ const SearchMovie = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(state);
     onSubmit({ ...state });
     setState({ search: '' });
     reset();
@@ -43,7 +39,6 @@ const SearchMovie = ({ onSubmit }) => {
 
   return (
     <>
-      {/* !!!!! ДОДАТИ!!! LOADING + ERROR */}
       <div className={styles.wrap}>
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
@@ -51,78 +46,16 @@ const SearchMovie = ({ onSubmit }) => {
             name="search"
             value={state.search}
             onChange={handleChange}
-            placeholder="search movie"
+            placeholder="тут ти можеш знайти любе кіно ;-))"
             required
           />
-          <button
-            className={styles.btn}
-            type="submit"
-            //   className={styles.btn}
-          >
+          <button className={styles.btn} type="submit">
             SEARCH
           </button>
         </form>
       </div>
-
-      {/* {state.search && <MovieDetailsPage />} */}
     </>
   );
 };
 
 export default SearchMovie;
-
-// import { useState } from 'react';
-
-// const SearchMovie = ({ onSubmit }) => {
-//   const [state, setState] = useState({
-//     search: '',
-//   });
-
-//   const handleChange = ({ target }) => {
-//     const { name, value } = target;
-//     setState({ [name]: value });
-//   };
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     console.log(state);
-//     onSubmit({ ...state });
-//     setState({ search: '' });
-//     reset();
-//   };
-
-//   const reset = () => {
-//     setState({
-//       search: '',
-//     });
-//   };
-
-//   return (
-//     <>
-//       {/* !!!!! ДОДАТИ!!! LOADING + ERROR */}
-//       <form
-//         onSubmit={handleSubmit}
-//         //   className={styles.form}
-//       >
-//         <input
-//           // className={styles.input}
-//           name="search"
-//           value={state.search}
-//           onChange={handleChange}
-//           placeholder="search movie"
-//           required
-//         />
-//         <button
-//           type="submit"
-//           //   className={styles.btn}
-//         >
-//           SEARCH
-//         </button>
-//       </form>
-
-//       {/* {state.search && <MovieDetailsPage />} */}
-//     </>
-//   );
-// };
-
-// export default SearchMovie;
