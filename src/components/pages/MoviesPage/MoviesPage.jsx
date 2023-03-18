@@ -26,12 +26,8 @@ const MoviesPage = () => {
           loading: true,
         }));
         const data = await getSearchMovie(search);
-        console.log(data);
-        console.log(data.results.length);
-
-        // if (data.results.length === 0) {
         //   alert('NOOOOO');
-        // }
+
         setState(prevState => ({
           ...prevState,
           items: data.results,

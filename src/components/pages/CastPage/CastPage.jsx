@@ -20,7 +20,7 @@ const CastPage = () => {
       setState(prevState => ({ ...prevState, loading: true, error: null }));
       try {
         const result = await getCast(movieId);
-        console.log(result);
+        // console.log(result);
         setState(prevState => ({ ...prevState, items: result }));
       } catch (error) {
         setState(prevState => ({ ...prevState, error }));
@@ -34,7 +34,7 @@ const CastPage = () => {
   }, [setState, movieId]);
 
   const { items, loading } = state;
-  console.log(items);
+  // console.log(items);
   // console.log(items.cast);
 
   return (
@@ -54,7 +54,6 @@ const CastPage = () => {
           />
         ))}
       {loading && <Loader />}
-   
     </div>
   );
 };

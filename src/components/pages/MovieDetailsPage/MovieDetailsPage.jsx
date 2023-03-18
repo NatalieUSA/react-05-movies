@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { getMovieDetails } from 'components/shared/api/api-movie';
 
 import styles from './movie-details-page.module.css';
-import defaultimage from '../CastPage/dfi.jpg';
+import defaultimage from './dfi.jpg';
 
 const MovieDetailsPage = () => {
   const [state, setState] = useState({
@@ -19,7 +19,7 @@ const MovieDetailsPage = () => {
       setState(prevState => ({ ...prevState, loading: true, error: null }));
       try {
         const result = await getMovieDetails(movieId);
-        console.log(result);
+        // console.log(result);
 
         setState(prevState => {
           return { ...prevState, item: result };

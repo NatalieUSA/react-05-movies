@@ -19,7 +19,7 @@ const ReviewsPage = () => {
       setState(prevState => ({ ...prevState, loading: true, error: null }));
       try {
         const data = await getReview(movieId);
-        console.log(data);
+        // console.log(data);
         setState(prevState => ({ ...prevState, items: data }));
       } catch (error) {
         setState(prevState => ({ ...prevState, error }));
