@@ -1,5 +1,6 @@
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { getMovieDetails } from 'components/shared/api/api-movie';
 import { Loader } from 'components/shared/Loader/Loader';
 
@@ -98,3 +99,7 @@ const MovieDetailsPage = () => {
   );
 };
 export default MovieDetailsPage;
+
+MovieDetailsPage.propTypes = {
+  movieId: PropTypes.string,
+};

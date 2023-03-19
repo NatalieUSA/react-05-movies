@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './movie-list.module.css';
 
 const MovieList = ({ items }) => {
@@ -22,4 +23,13 @@ export default MovieList;
 
 MovieList.defaultProps = {
   items: [],
+};
+
+MovieList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
 };

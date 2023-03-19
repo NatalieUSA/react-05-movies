@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './search-movie-form.module.css';
 
 const SearchMovie = ({ onSubmit }) => {
@@ -59,3 +60,7 @@ const SearchMovie = ({ onSubmit }) => {
 };
 
 export default SearchMovie;
+
+SearchMovie.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
