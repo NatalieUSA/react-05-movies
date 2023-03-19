@@ -1,38 +1,35 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getReview } from 'components/shared/api/api-movie';
 import PropTypes from 'prop-types';
+import { getReview } from 'components/shared/api/api-movie';
+import { Loader } from 'components/shared/Loader/Loader';
+
 import styles from './reviews-page.module.css';
 
 const ReviewsPage = () => {
-  const [state, setState] = useState({
-    items: [],
-    loading: false,
-    error: null,
-  });
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // const { movieId } = useParams();
   const { movieId } = useParams();
 
   useEffect(() => {
     const fetchReview = async () => {
-      setState(prevState => ({ ...prevState, loading: true, error: null }));
+      setLoading(true);
+      setError(null);
       try {
-        const data = await getReview(movieId);
+        const result = await getReview(movieId);
         // console.log(data);
-        setState(prevState => ({ ...prevState, items: data }));
+        setItems(result);
       } catch (error) {
-        setState(prevState => ({ ...prevState, error }));
+        setError(error.message);
       } finally {
-        setState(prevState => {
-          return { ...prevState, loading: false };
-        });
+        return setLoading(false);
       }
     };
     fetchReview();
-  }, [setState, movieId]);
+  }, [movieId]);
 
-  const { items } = state;
   const elements = items.map(({ id, author, content }) => (
     <li key={id}>
       <h4>Author: {author}</h4>
@@ -43,6 +40,9 @@ const ReviewsPage = () => {
     <div className={styles.wrap}>
       <h2>Total reviews: {items.length} </h2>
       <ol className={styles.list}>{elements}</ol>
+
+      {loading && <Loader />}
+      {error && <p>...error load ...load failed</p>}
     </div>
   );
 };

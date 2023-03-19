@@ -2,14 +2,14 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Loader } from './shared/Loader/Loader';
 
-const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
+const HomePage = lazy(() => import('Pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('Pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() =>
-  import('./pages/MovieDetailsPage/MovieDetailsPage')
+  import('Pages/MovieDetailsPage/MovieDetailsPage')
 );
-const CastPage = lazy(() => import('./pages/CastPage/CastPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
-const ReviewsPage = lazy(() => import('./pages/ReviewsPage/ReviewsPage'));
+const CastPage = lazy(() => import('Pages/CastPage/CastPage'));
+const NotFoundPage = lazy(() => import('Pages/NotFoundPage/NotFoundPage'));
+const ReviewsPage = lazy(() => import('Pages/ReviewsPage/ReviewsPage'));
 
 const MovieRoutes = () => {
   return (
@@ -21,8 +21,7 @@ const MovieRoutes = () => {
           <Route path="cast" element={<CastPage />} />
           <Route path="reviews" element={<ReviewsPage />} />
         </Route>
-
-        <Route path="*" element={<NotFoundPage />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route> *
       </Routes>
     </Suspense>
   );

@@ -1,41 +1,36 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { getCast } from 'components/shared/api/api-movie';
 import defaultimage from './dfi.jpg';
-import PropTypes from 'prop-types';
+
 import styles from './cast-page.module.css';
 import { Loader } from 'components/shared/Loader/Loader';
 
 const CastPage = () => {
-  const [state, setState] = useState({
-    items: [],
-    loading: false,
-    error: null,
-  });
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const { movieId } = useParams();
 
   useEffect(() => {
     const fetchCast = async () => {
-      setState(prevState => ({ ...prevState, loading: true, error: null }));
+      setLoading(true);
+      setError(null);
+
       try {
         const result = await getCast(movieId);
         // console.log(result);
-        setState(prevState => ({ ...prevState, items: result }));
+        setItems(result);
       } catch (error) {
-        setState(prevState => ({ ...prevState, error }));
+        setError(error.message);
       } finally {
-        setState(prevState => {
-          return { ...prevState, loading: false };
-        });
+        return setLoading(false);
       }
     };
     fetchCast();
-  }, [setState, movieId]);
-
-  const { items, loading } = state;
-  // console.log(items);
-  // console.log(items.cast);
+  }, [movieId]);
 
   return (
     <div className={styles.imgwrap}>
@@ -54,6 +49,7 @@ const CastPage = () => {
           />
         ))}
       {loading && <Loader />}
+      {error && <p>...error load actors...actors load failed {error}</p>}
     </div>
   );
 };

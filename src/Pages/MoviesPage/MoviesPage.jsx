@@ -1,5 +1,3 @@
-//import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchMovieForm from 'components/modules/SearchMovieForm/SearchMovieForm';
@@ -8,11 +6,9 @@ import MovieList from 'components/modules/MovieList/MovieList';
 import { Loader } from 'components/shared/Loader/Loader';
 
 const MoviesPage = () => {
-  const [state, setState] = useState({
-    items: [],
-    loading: false,
-    error: null,
-  });
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
@@ -20,28 +16,15 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const fetchMovie = async () => {
+      setLoading(true);
       try {
-        setState(prevState => ({
-          ...prevState,
-          loading: true,
-        }));
         const data = await getSearchMovie(search);
-        //   alert('NOOOOO');
-
-        setState(prevState => ({
-          ...prevState,
-          items: data.results,
-        }));
+        setItems(data.results);
+        // alert('NOOOOO');
       } catch (error) {
-        setState(prevState => ({
-          ...prevState,
-          error,
-        }));
+        setError(error.message);
       } finally {
-        setState(prevState => ({
-          ...prevState,
-          loading: false,
-        }));
+        return setLoading(false);
       }
     };
 
@@ -54,14 +37,13 @@ const MoviesPage = () => {
     setSearchParams({ search });
   };
 
-  const { items, loading } = state;
-  console.log(items);
   return (
     <div>
       <SearchMovieForm onSubmit={changeSearch} />
       {items.length > 0 && <MovieList items={items} />}
 
       {loading && <Loader />}
+      {error && <p>...error load ...load failed {error}</p>}
     </div>
   );
 };

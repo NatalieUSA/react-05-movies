@@ -4,38 +4,32 @@ import { getTrendingMovie } from './../../shared/api/api-movie';
 // import styles from './trend-movies.module.css';
 
 const TrendMovies = () => {
-  const [state, setState] = useState({
-    items: [],
-    loading: false,
-    error: null,
-  });
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      setState(prevState => ({ ...prevState, loading: true, error: null }));
+      setLoading(true);
+      setError(null);
       try {
         const result = await getTrendingMovie();
-        setState(prevState => {
-          return { ...prevState, items: [...prevState.items, ...result] };
-        });
+        setItems(result);
+        console.log(result);
       } catch (error) {
-        setState(prevState => ({ ...prevState, error }));
+        setError(error.message);
       } finally {
-        setState(prevState => {
-          return { ...prevState, loading: false };
-        });
+        return setLoading(false);
       }
     };
     fetchPosts();
-  }, [setState]);
-
-  const { items, loading, error } = state;
+  }, []);
 
   return (
     <div>
       {items.length && <MovieList items={items} />}
       {loading && <p>...load posts</p>}
-      {error && <p>...error load posts...posts load failed</p>}
+      {error && <p>...error load movie...movie load failed</p>}
     </div>
   );
 };
