@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getReview } from 'components/shared/api/api-movie';
 import { Loader } from 'components/shared/Loader/Loader';
 
-import styles from './reviews-page.module.css';
+import { Wrap } from './ReviewsPage .styled';
 
 const ReviewsPage = () => {
   const [items, setItems] = useState([]);
@@ -37,13 +37,13 @@ const ReviewsPage = () => {
     </li>
   ));
   return (
-    <div className={styles.wrap}>
+    <Wrap>
       <h2>Total reviews: {items.length} </h2>
-      <ol className={styles.list}>{elements}</ol>
+      <ol>{elements}</ol>
 
       {loading && <Loader />}
       {error && <p>...error load ...load failed</p>}
-    </div>
+    </Wrap>
   );
 };
 export default ReviewsPage;

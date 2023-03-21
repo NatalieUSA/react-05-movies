@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { getCast } from 'components/shared/api/api-movie';
 import defaultimage from './dfi.jpg';
 
-import styles from './cast-page.module.css';
 import { Loader } from 'components/shared/Loader/Loader';
+import { Image, Total, Wrap } from './CastPage.styled';
 
 const CastPage = () => {
   const [items, setItems] = useState([]);
@@ -33,13 +33,12 @@ const CastPage = () => {
   }, [movieId]);
 
   return (
-    <div className={styles.imgwrap}>
-      <h2 className={styles.total}>Total actors: {items.length} </h2>
+    <Wrap>
+      <Total>Total actors: {items.length} </Total>
       {items.length > 0 &&
         items.map(item => (
-          <img
+          <Image
             key={movieId}
-            className={styles.cast}
             src={
               item?.profile_path
                 ? `https://image.tmdb.org/t/p/w500${item.profile_path}`
@@ -50,7 +49,7 @@ const CastPage = () => {
         ))}
       {loading && <Loader />}
       {error && <p>...error load actors...actors load failed {error}</p>}
-    </div>
+    </Wrap>
   );
 };
 export default CastPage;

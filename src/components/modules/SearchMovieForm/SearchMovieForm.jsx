@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styles from './search-movie-form.module.css';
-
+import { Wrap, Form, Input, Button } from './SearchMovieForm.styled';
 const SearchMovie = ({ onSubmit }) => {
   const [state, setState] = useState({
     search: '',
@@ -40,21 +39,18 @@ const SearchMovie = ({ onSubmit }) => {
 
   return (
     <>
-      <div className={styles.wrap}>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <input
-            className={styles.input}
+      <Wrap>
+        <Form onSubmit={handleSubmit}>
+          <Input
             name="search"
             value={state.search}
             onChange={handleChange}
-            placeholder="тут ти можеш знайти любе кіно ;-))"
+            placeholder="search movie"
             required
           />
-          <button className={styles.btn} type="submit">
-            SEARCH
-          </button>
-        </form>
-      </div>
+          <Button type="submit">SEARCH</Button>
+        </Form>
+      </Wrap>
     </>
   );
 };

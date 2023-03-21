@@ -1,15 +1,15 @@
 import TrendMovies from 'components/modules/TrendMovies/TrendMovies';
-import styles from './home-page.module.css';
+import { Wrap, Title } from './HomePage.styled';
 
 const HomePage = () => {
   return (
-    <div className={styles.wrap}>
+    <Wrap>
       <div>
-        <h3>Trending movies of the last week</h3>
+        <Title>Trending movies of the last week</Title>
 
         <TrendMovies />
       </div>
-    </div>
+    </Wrap>
   );
 };
 

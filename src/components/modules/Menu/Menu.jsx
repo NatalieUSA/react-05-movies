@@ -1,19 +1,16 @@
-import { NavLink } from 'react-router-dom';
 import menuItems from './menu-items';
-import styles from './menu.module.css';
+import { List, StyledNavLink } from './Menu.styled';
 
 const Menu = () => {
   const elements = menuItems.map(({ id, to, text }) => (
     <li key={id}>
-      <NavLink to={to} className={styles.link}>
-        {text}
-      </NavLink>
+      <StyledNavLink to={to}>{text}</StyledNavLink>
     </li>
   ));
 
   return (
     <div>
-      <ul className={styles.wrapper}>{elements}</ul>
+      <List>{elements}</List>
     </div>
   );
 };
