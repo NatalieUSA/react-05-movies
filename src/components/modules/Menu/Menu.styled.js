@@ -33,7 +33,7 @@ export const StyledNavLink = styled(NavLink)`
     width: 180px;
   }
 
-  $:global(.active) {
+ &.active {
     text-transform: uppercase;
     font-weight: 700;
     color: rgb(211, 4, 4);

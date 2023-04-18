@@ -27,7 +27,6 @@ export const Total = styled.h2`
 `;
 
 export const Image = styled.img`
-  object-fit: cover;
   // object-fit: cover;
 
   @media (max-width: 1023px) {
