@@ -5,7 +5,7 @@ import Menu from './modules/Menu/Menu';
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/goit-react-hw-05-movies">
+    <BrowserRouter basename="/react-05-movies">
       <Menu />
       <MovieRoutes />
     </BrowserRouter>

@@ -9,7 +9,7 @@ export const List = styled.ol`
   margin: 0 auto;
 
   list-style: none;
-
+  text-align: start;
   height: 100%;
   background-color: rgb(211, 4, 4);
   color: rgb(211, 4, 4);
